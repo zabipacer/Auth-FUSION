@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-900 text-white py-8 px-16">
-      <div className="grid md:grid-cols-2 gap-8">
+    <footer className="bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-900 text-white py-8 px-4 sm:px-8 md:px-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Links Section */}
         <div>
           <ul className="space-y-2 text-sm">
