@@ -1,8 +1,8 @@
 import React from "react";
 
 const AimsAndScope = () => (
-  <div className="p-6 bg-emerald-50 rounded-lg shadow-md">
-    <h1 className="text-2xl font-bold text-emerald-900 mb-4">Aims and Scope</h1>
+  <div className="p-6 bg-emerald-50 rounded-lg shadow-md max-w-full md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto">
+    <h1 className="text-2xl font-bold text-emerald-900 mb-4 text-center md:text-left">Aims and Scope</h1>
     <p className="text-gray-700 mb-4">
       Discover Applied Sciences (formerly SN Applied Sciences) is a fully open
       access (OA) journal. All content published in the journal is published
@@ -26,9 +26,7 @@ const AimsAndScope = () => (
       interested in applied research that makes significant scientific and
       societal contributions across the broad spectrum of life sciences.
     </p>
-    <h2 className="text-xl font-semibold text-emerald-800 mt-6 mb-3">
-      Topics Covered
-    </h2>
+    <h2 className="text-xl font-semibold text-emerald-800 mt-6 mb-3">Topics Covered</h2>
     <ul className="list-disc list-inside text-gray-700">
       <li>Agriculture and Agronomy</li>
       <li>Aquatic and Marine Biology</li>

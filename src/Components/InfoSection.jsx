@@ -7,13 +7,11 @@ import Explore from "./Explore";
 import JournalUpdates from "./JournalUpdates";
 import LatestArticles from "./LatestArticles";
 import Overview from "./OverviewSection";
+import LatestResearch from "./LatestResearch";
 
-// Components for each section
 const InfoSection = () => {
-  // State to track selected section
   const [activeSection, setActiveSection] = useState(null);
 
-  // Data for sections
   const sections = [
     {
       title: "Aims and Scope",
@@ -33,46 +31,50 @@ const InfoSection = () => {
   ];
 
   return (
-    <div className="flex px-6 py-8 bg-white">
+    <div className="flex flex-col lg:flex-row px-4 py-8 bg-white">
       {/* Left Section (Dynamic Content) */}
       <div className="flex-1">
         {/* Grid Section */}
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {sections.map((section, index) => (
             <div
               key={index}
               onClick={() => setActiveSection(index)}
-              className="bg-emerald-100 p-6 rounded-lg shadow-md flex items-center gap-4 cursor-pointer hover:bg-emerald-200 transition"
+              className="bg-emerald-100 p-4 sm:p-6 rounded-lg shadow-md flex items-center gap-4 cursor-pointer hover:bg-emerald-200 transition"
             >
               {/* Icon */}
               <div>{section.icon}</div>
 
               {/* Title */}
-              <h2 className="text-lg font-semibold text-emerald-900">{section.title}</h2>
+              <h2 className="text-sm sm:text-base lg:text-lg font-semibold text-emerald-900">
+                {section.title}
+              </h2>
             </div>
           ))}
         </div>
 
         {/* Dynamic Content Section */}
-        <div className="mt-8 bg-emerald-50 p-6 rounded-lg shadow-md">
+        <div className="mt-8 bg-emerald-50 p-4 sm:p-6 rounded-lg shadow-md">
           {activeSection !== null ? (
             sections[activeSection].component
-          ) : (<><Overview/>
-            <LatestArticles/>
-           </>
-             )}
+          ) : (
+            <>
+              <Overview />
+              <LatestResearch />
+            </>
+          )}
         </div>
       </div>
 
       {/* Right Section (Author Guidelines and Explore) */}
-      <div className="ml-8 w-1/4 flex flex-col gap-6">
+      <div className="mt-8 lg:mt-0 lg:ml-8 w-full lg:w-1/4 flex flex-col gap-6">
         {/* Author Guidelines */}
-        <div className="bg-emerald-100 p-6 rounded-lg shadow-md">
+        <div className="bg-emerald-100 p-4 sm:p-6 rounded-lg shadow-md">
           <AuthorGuidelines />
         </div>
 
         {/* Explore */}
-        <div className="bg-emerald-100 p-6 rounded-lg shadow-md">
+        <div className="bg-emerald-100 p-4 sm:p-6 rounded-lg shadow-md">
           <Explore />
         </div>
       </div>
