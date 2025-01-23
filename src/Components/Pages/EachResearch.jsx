@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ref, get, child } from "firebase/database";
 import { useParams } from "react-router-dom";
 import { DB } from "../../config/firebase";
+import DOMPurify from "dompurify"; // Import DOMPurify for sanitization (if needed)
 
 const EachResearch = () => {
   const { id } = useParams();
@@ -15,7 +16,6 @@ const EachResearch = () => {
         const snapshot = await get(child(dbRef, `research/${id}`));
         if (snapshot.exists()) {
           setResearch(snapshot.val());
-          console.log(snapshot.val());
         } else {
           console.log("No data found for this research.");
         }
@@ -28,6 +28,43 @@ const EachResearch = () => {
 
     fetchResearch();
   }, [id]);
+
+  // Dynamic styling functions
+  const formatText = (text) => {
+    return text.split("\n").map((line, index) => {
+      const isImportant = line.toLowerCase().includes("important");
+
+      return (
+        <p
+          key={index}
+          style={{
+            color: isImportant ? "red" : "inherit", // Red for important text, else default
+            fontWeight: line.length > 300 ? "bold" : "normal", // Bold for long paragraphs
+            marginBottom: "1rem",
+          }}
+        >
+          {line}
+        </p>
+      );
+    });
+  };
+
+  const renderListItems = (text) => {
+    const listItems = text.split("\n").map((item, index) => {
+      return (
+        <li
+          key={index}
+          style={{
+            color: item.toLowerCase().includes("important") ? "red" : "inherit",
+            fontWeight: "normal",
+          }}
+        >
+          {item}
+        </li>
+      );
+    });
+    return <ul>{listItems}</ul>;
+  };
 
   if (loading) {
     return (
@@ -50,20 +87,22 @@ const EachResearch = () => {
   }
 
   return (
-    <div className="bg-gray-50 min-h-screen py-10 px-4">
-      <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-lg p-8">
+    <div className="bg-gray-50 min-h-screen py-10 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-lg p-6 sm:p-8">
         {/* Title Section */}
         <header className="mb-8 text-center">
-          <h1 className="text-4xl font-bold text-gray-900">{research.title}</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">
+            {research.title}
+          </h1>
         </header>
 
         {/* Abstract Section */}
         {research.abstract && (
-          <section className="bg-gray-100 p-6 rounded-lg shadow-md mb-8">
+          <section className="bg-gray-100 p-6 rounded-lg shadow-md mb-8 sm:mb-10">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Abstract</h2>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              {research.abstract}
-            </p>
+            <div className="text-base sm:text-lg text-gray-800 leading-relaxed max-w-3xl mx-auto">
+              {formatText(research.abstract)}
+            </div>
           </section>
         )}
 
@@ -72,7 +111,7 @@ const EachResearch = () => {
           <img
             src={research.image}
             alt={research.title}
-            className="w-full max-h-[500px] object-contain rounded-lg shadow-md mb-8"
+            className="w-full max-h-[500px] object-contain rounded-lg shadow-md mb-8 sm:mb-10"
           />
         )}
 
@@ -80,51 +119,55 @@ const EachResearch = () => {
         <section>
           {research.topics && research.topics.length > 0 ? (
             research.topics.map((topic, topicIndex) => (
-              <article key={topicIndex} className="mb-10">
-                <h2 className="text-2xl font-semibold text-gray-800 mb-3">
+              <article key={topicIndex} className="mb-8 sm:mb-10">
+                <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3">
                   {`${topicIndex + 1}. ${topic.title}`}
                 </h2>
 
                 {topic.description && (
-                  <p className="text-gray-600 mb-4">{topic.description}</p>
+                  <div className="text-base sm:text-lg text-gray-700 leading-relaxed mb-4 max-w-3xl mx-auto">
+                    {formatText(topic.description)}
+                  </div>
                 )}
 
                 {topic.image && (
                   <img
                     src={topic.image}
                     alt={topic.title}
-                    className="w-full max-h-[400px] object-contain rounded-lg shadow-md mb-6"
+                    className="w-full max-h-[400px] object-contain rounded-lg shadow-md mb-6 sm:mb-8"
                   />
                 )}
 
                 {topic.subtopics && topic.subtopics.length > 0 && (
-                  <div className="pl-6 border-l-4 border-emerald-300">
-                    {topic.subtopics.map((subtopic, subIndex) => (
-                      <div key={subIndex} className="mb-6">
-                        <h3 className="text-xl font-medium text-gray-700">
-                          {`${topicIndex + 1}.${subIndex + 1} ${subtopic.subtopicTitle}`}
-                        </h3>
-                        {subtopic.subtopicDescription && (
-                          <p className="text-gray-600 mt-2">
-                            {subtopic.subtopicDescription}
-                          </p>
-                        )}
+                  <div className="pl-6 border-l-4 border-indigo-400">
+                    <ul className="list-disc list-inside">
+                      {topic.subtopics.map((subtopic, subIndex) => (
+                        <li key={subIndex} className="mb-6 sm:mb-8">
+                          <h3 className="text-lg sm:text-xl font-medium text-gray-800">
+                            {`${topicIndex + 1}.${subIndex + 1} ${subtopic.subtopicTitle}`}
+                          </h3>
+                          {subtopic.subtopicDescription && (
+                            <p className="text-gray-700 mt-2 leading-relaxed">
+                              {formatText(subtopic.subtopicDescription)}
+                            </p>
+                          )}
 
-                        {subtopic.subtopicImage && (
-                          <img
-                            src={subtopic.subtopicImage}
-                            alt={subtopic.subtopicTitle}
-                            className="w-full max-h-[300px] object-contain rounded-lg shadow-md mt-4"
-                          />
-                        )}
-                      </div>
-                    ))}
+                          {subtopic.subtopicImage && (
+                            <img
+                              src={subtopic.subtopicImage}
+                              alt={subtopic.subtopicTitle}
+                              className="w-full max-h-[300px] object-contain rounded-lg shadow-md mt-4 sm:mt-6"
+                            />
+                          )}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 )}
               </article>
             ))
           ) : (
-            <p className="text-gray-600">No topics available for this research.</p>
+            <p className="text-gray-700 text-lg">No topics available for this research.</p>
           )}
         </section>
       </div>
