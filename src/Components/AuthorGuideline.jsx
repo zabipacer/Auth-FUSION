@@ -9,16 +9,16 @@ const AuthorGuidelines = () => {
       title: "Manuscript Submission Guidelines",
       content: (
         <>
-          <h4 className="font-semibold text-gray-800 mb-2">General Requirements:</h4>
-          <p className="text-gray-700 mb-4">
+          <h4 className="font-semibold text-emerald-800 mb-4">General Requirements</h4>
+          <p className="text-gray-800 mb-6">
             Manuscripts must be submitted in English and should be double-spaced, using a 12-point font size (preferably Times New Roman). The manuscript should include the following sections: Abstract, Introduction, Methodology, Results, Discussion, and Conclusion.
           </p>
-          <h4 className="font-semibold text-gray-800 mb-2">Formatting Instructions:</h4>
-          <p className="text-gray-700 mb-4">
+          <h4 className="font-semibold text-emerald-800 mb-4">Formatting Instructions</h4>
+          <p className="text-gray-800 mb-6">
             Authors are required to submit their manuscript in a Microsoft Word (.docx) format or PDF. All figures, tables, and illustrations must be embedded in the manuscript at the appropriate locations.
           </p>
-          <h4 className="font-semibold text-gray-800 mb-2">Peer Review Process:</h4>
-          <p className="text-gray-700 mb-4">
+          <h4 className="font-semibold text-emerald-800 mb-4">Peer Review Process</h4>
+          <p className="text-gray-800">
             After submission, your manuscript will undergo a peer review process. Reviewers will evaluate the quality, originality, and relevance of your research. You will be notified of the outcome within 4-6 weeks.
           </p>
         </>
@@ -28,16 +28,16 @@ const AuthorGuidelines = () => {
       title: "Author Agreement",
       content: (
         <>
-          <h4 className="font-semibold text-gray-800 mb-2">Agreement Overview:</h4>
-          <p className="text-gray-700 mb-4">
+          <h4 className="font-semibold text-emerald-800 mb-4">Agreement Overview</h4>
+          <p className="text-gray-800 mb-6">
             By submitting your manuscript, you agree to allow Fusion Journal to publish your work under the applicable copyright terms. Authors must confirm that the work is original and has not been submitted or published elsewhere.
           </p>
-          <h4 className="font-semibold text-gray-800 mb-2">Copyright and Licensing:</h4>
-          <p className="text-gray-700 mb-4">
+          <h4 className="font-semibold text-emerald-800 mb-4">Copyright and Licensing</h4>
+          <p className="text-gray-800 mb-6">
             Authors will retain the copyright to their work but will grant Fusion Journal an exclusive license to publish and distribute the manuscript. The journal follows an open-access model, meaning your work will be freely available to readers worldwide.
           </p>
-          <h4 className="font-semibold text-gray-800 mb-2">Ethical Guidelines:</h4>
-          <p className="text-gray-700 mb-4">
+          <h4 className="font-semibold text-emerald-800 mb-4">Ethical Guidelines</h4>
+          <p className="text-gray-800">
             Authors must ensure their work adheres to ethical standards. This includes ensuring that no plagiarism is involved and that proper credit is given to contributors.
           </p>
         </>
@@ -114,22 +114,27 @@ const AuthorGuidelines = () => {
   </ul>
 
   {/* Popup Modal */}
-  {isPopupOpen && (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-md sm:max-w-2xl w-full">
-        <h4 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">
-          Details
-        </h4>
-        <div className="text-gray-700 mb-4">{popupContent}</div>
-        <button
-          onClick={closePopup}
-          className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
-        >
-          Close
-        </button>
-      </div>
-    </div>
-  )}
+   {/* Popup Modal */}
+   {isPopupOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-emerald-900 bg-opacity-80 z-50">
+          <div className="bg-white p-8 rounded-lg shadow-2xl max-w-4xl w-full relative">
+            <h4 className="text-2xl font-bold text-emerald-800 mb-6">Guideline Details</h4>
+            <div className="text-gray-800 text-lg mb-8 overflow-y-auto max-h-96">{popupContent}</div>
+            <button
+              onClick={closePopup}
+              className="absolute top-4 right-4 text-emerald-900 hover:text-emerald-700 text-xl font-bold"
+            >
+              &times;
+            </button>
+            <button
+              onClick={closePopup}
+              className="mt-4 px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
 </div>
 
   );

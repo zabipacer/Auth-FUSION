@@ -1,80 +1,68 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-900 text-white py-8 px-4 sm:px-8 md:px-16">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <footer className="bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-900 text-white py-10 px-6 sm:px-12 md:px-20">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Links Section */}
         <div>
-          <ul className="space-y-2 text-sm">
+          <h2 className="text-xl font-semibold mb-4 border-b-2 border-emerald-400 pb-2">
+            Quick Links
+          </h2>
+          <ul className="space-y-4 text-sm">
             <li>
-              <a
-                href="#"
-                className="hover:underline hover:text-gray-200 transition"
+              <Link
+                to="/copyright-policy"
+                className="hover:text-emerald-300 transition"
               >
-                Your privacy choices / Manage cookies
-              </a>
+                Copyright Policy
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
-                className="hover:underline hover:text-gray-200 transition"
+              <Link
+                to="/about-us"
+                className="hover:text-emerald-300 transition"
               >
-                Your US state privacy rights
-              </a>
+                About Us
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
-                className="hover:underline hover:text-gray-200 transition"
+              <Link
+                to="/author-guidelines"
+                className="hover:text-emerald-300 transition"
               >
-                Accessibility statement
-              </a>
+                Author Guidelines
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
-                className="hover:underline hover:text-gray-200 transition"
+              <Link
+                to="/contact-us"
+                className="hover:text-emerald-300 transition"
               >
-                Terms and conditions
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="hover:underline hover:text-gray-200 transition"
-              >
-                Privacy policy
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="hover:underline hover:text-gray-200 transition"
-              >
-                Help and support
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="hover:underline hover:text-gray-200 transition"
-              >
-                Cancel contracts here
-              </a>
+                Contact Us
+              </Link>
             </li>
           </ul>
         </div>
 
         {/* Info Section */}
         <div>
-          <p className="text-sm mb-4">
-            39.34.9.197 <br />
-            Not affiliated
+          <h2 className="text-xl font-semibold mb-4 border-b-2 border-emerald-400 pb-2">
+            About Fusion
+          </h2>
+          <p className="text-sm leading-relaxed mb-6">
+            Fusion is dedicated to bridging the gap between science and
+            engineering. We empower researchers, students, and professionals to
+            share their knowledge and make groundbreaking discoveries.
           </p>
-          <p className="text-lg font-semibold">Springer Nature</p>
-          <p className="text-sm mt-1">© 2025 Springer Nature</p>
+          <p className="text-lg font-bold">Fusion</p>
+          <p className="text-sm mt-1">© 2025 Fusion. All rights reserved.</p>
         </div>
+      </div>
+      {/* Bottom Bar */}
+      <div className="border-t border-emerald-500 mt-8 pt-4 text-center text-sm">
+        Made with ❤️ by the Fusion Team.
       </div>
     </footer>
   );

@@ -1,29 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaReact } from "react-icons/fa";
 
 const Navbar = () => {
   return (
-    <div className="border-b border-emerald-400 shadow-sm">
-      <nav className="flex items-center justify-between px-6 py-4 bg-white">
-        {/* Left Section: Logo (you can add it here if needed) */}
-        
-        {/* Right Section: Publish with Us and Login */}
-        <div className="flex items-center space-x-4 flex-1 justify-end">
-          {/* Publish with Us Button */}
-          <Link
-            to="Login"
-            className="px-4 py-2 text-sm font-medium text-white bg-emerald-700 rounded hover:bg-emerald-800"
-          >
-            Publish with Us
-          </Link>
-          
-          {/* Login Link */}
-          <Link to="Login">
-            <span className="text-lg font-medium text-emerald-700">Login</span>
-          </Link>
-        </div>
-      </nav>
-    </div>
+    <nav className="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+      {/* Left Side - Home Button */}
+      <div className="flex items-center space-x-2">
+        <FaReact className="text-emerald-700 text-2xl" /> {/* React Icon */}
+        <Link
+          to="/"
+          className="text-emerald-700 text-lg font-semibold hover:underline"
+        >
+          Home
+        </Link>
+      </div>
+
+      {/* Right Side - About Us Link */}
+      <div>
+        <Link
+          to="/about"
+          className="text-gray-600 hover:text-emerald-700 font-medium"
+        >
+          About Us
+        </Link>
+      </div>
+    </nav>
   );
 };
 

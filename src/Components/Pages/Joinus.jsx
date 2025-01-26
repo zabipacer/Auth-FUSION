@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../config/firebase";
-import { signOut } from "firebase/auth";
 
 const JoinUs = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setIsLoading(false); // User is logged in, allow access
-      } else {
-        navigate("/login"); // Redirect to login if not logged in
+      if (!user) {
+        navigate("/login");
       }
     });
 
-    return () => unsubscribe(); // Cleanup the listener
+    return () => unsubscribe();
   }, [navigate]);
 
   const [formData, setFormData] = useState({
@@ -25,6 +22,7 @@ const JoinUs = () => {
     abstract: "",
     file: null,
   });
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,34 +30,53 @@ const JoinUs = () => {
   };
 
   const handleFileChange = (e) => {
-    setFormData({ ...formData, file: e.target.files[0] });
+    const file = e.target.files[0];
+    if (file && file.size > 5 * 1024 * 1024) {
+      setError("File size cannot exceed 5MB.");
+      return;
+    }
+    setFormData({ ...formData, file });
+    setError(null);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Here you would integrate EmailJS, NodeMailer, or another email service.
-    console.log("Form Data Submitted:", formData);
-    alert("Thank you for submitting your research! We will get back to you soon.");
+    if (!formData.file) {
+      setError("Please upload a file.");
+      return;
+    }
 
-    // Reset form after submission
-    setFormData({
-      name: "",
-      email: "",
-      title: "",
-      abstract: "",
-      file: null,
-    });
+    const data = new FormData();
+    data.append("name", formData.name);
+    data.append("email", formData.email);
+    data.append("title", formData.title);
+    data.append("abstract", formData.abstract);
+    data.append("file", formData.file);
+
+    try {
+      const response = await axios.post("", data);
+      alert(response.data.message);
+      setFormData({
+        name: "",
+        email: "",
+        title: "",
+        abstract: "",
+        file: null,
+      });
+    } catch (err) {
+      console.error(err);
+      setError("Error submitting the form. Please try again later.");
+    }
   };
 
-  const handleSignOut = () => {
-    auth.signOut()
-      .then(() => {
-        navigate("/login"); // Redirect to login after sign-out
-      })
-      .catch((error) => {
-        console.error("Error signing out: ", error);
-      });
+  const handleSignOut = async () => {
+    try {
+      await auth.signOut();
+      navigate("/login");
+    } catch (error) {
+      console.error("Error signing out: ", error);
+    }
   };
 
   return (
@@ -145,17 +162,18 @@ const JoinUs = () => {
         {/* File Upload */}
         <div className="mb-4">
           <label htmlFor="file" className="block text-sm font-medium text-gray-700">
-            Upload Your Research Paper (PDF only)
+            Upload Your Research Paper (PDF, DOC, DOCX, Max 5MB)
           </label>
           <input
             type="file"
             id="file"
             name="file"
-            accept="application/pdf"
+            accept=".pdf,.doc,.docx"
             onChange={handleFileChange}
             className="mt-2 block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100"
             required
           />
+          {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
         </div>
 
         {/* Submit Button */}
@@ -168,6 +186,7 @@ const JoinUs = () => {
 
         {/* Sign Out Button */}
         <button
+          type="button"
           onClick={handleSignOut}
           className="my-4 py-2 px-4 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition"
         >

@@ -60,6 +60,14 @@ const ResearchPage = () => {
 
   return (
     <div className="p-8 bg-gray-50 min-h-screen">
+      {/* Home Button */}
+      <a
+        href="/"
+        className="text-emerald-700 underline text-xl font-bold mb-6 inline-block bg-transparent hover:text-emerald-600"
+      >
+        Home
+      </a>
+
       {/* Page Header */}
       <h1 className="text-3xl font-bold text-emerald-700 mb-6">Research</h1>
 
@@ -70,7 +78,9 @@ const ResearchPage = () => {
             key={index}
             onClick={() => setSelectedCategory(category.name)} // Set selected category on click
             className={`bg-white p-4 rounded-lg shadow-md flex flex-col items-center text-center hover:shadow-lg transition cursor-pointer ${
-              selectedCategory === category.name ? "border-2 border-emerald-600" : ""
+              selectedCategory === category.name
+                ? "border-2 border-emerald-600"
+                : ""
             }`}
           >
             <div className="text-emerald-600 text-4xl mb-3">{category.icon}</div>
@@ -93,7 +103,7 @@ const ResearchPage = () => {
             >
               <img
                 src={
-                  article.mainImage // Use article.mainImage here instead of research.mainImage
+                  article.mainImage
                     ? article.mainImage
                     : "https://placehold.co/600x400/png"
                 }

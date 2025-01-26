@@ -3,40 +3,44 @@ import { Link } from "react-router-dom";
 
 const JournalAd = () => {
   return (
-    <div className="h-auto lg:h-80 bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-900 text-white flex flex-col lg:flex-row items-center lg:items-center justify-between px-6 lg:px-16 py-10 space-y-6 lg:space-y-0">
-      {/* Logo and Title Section */}
-      <div className="flex flex-col items-center lg:flex-row lg:items-center lg:space-x-6">
+    <div
+      className="w-full h-[330px] bg-cover bg-center flex items-center justify-center lg:justify-between"
+      style={{
+        backgroundImage: 'url(/backgroundR.png)', // Keeps the same image for all screens
+      }}
+    >
+      {/* Logo Section */}
+      <div className="lg:w-3/4 w-screen flex flex-col justify-center items-center md:block ">
         <img
-          src="/LogoR.jpeg" // Replace with your company logo URL
+          src="/LogoR.jpeg" // Replace with your logo's URL
           alt="Fusion Logo"
-          className="h-24 w-auto lg:h-28 rounded-xl" // Adjust logo size for different screens
+          className="h-32 md:ml-6 sm:ml-12  lg:w-auto lg:h-40 lg:rounded-lg object-cover"
         />
-        <div className="hidden md:inline-block  text-center lg:text-left mt-4 lg:mt-0">
-          <h1 className=" text-4xl font-bold">Fusion</h1>
-          <p className=" text-sm md:text-lg lg:text-lg mt-2">
-            Where Engineering Meets Science
-          </p>
-        </div>
+
+        {/* Buttons Section */}
+        <div className="flex flex-row items-center justify-center md:justify-start md:ml-[14.7px]  mt-8  sm:space-y-0 space-x-4 ">
+  <Link to="Research">
+    <button className="w-full sm:w-auto px-6 py-3 bg-white text-emerald-700 font-semibold rounded-lg shadow-lg hover:bg-gray-100 transition">
+      Explore Research
+    </button>
+  </Link>
+  <Link to="Join">
+    <button className="w-full sm:w-auto px-6 py-3 bg-emerald-700 text-white font-semibold rounded-lg shadow-lg hover:bg-emerald-800 transition">
+      Submit Manuscript
+    </button>
+  </Link>
+</div>
+
       </div>
 
-      {/* Copywriting and Buttons Section */}
-      <div className="text-center lg:text-right flex flex-col items-center lg:items-end space-y-4">
-        <p className="text-sm sm:text-xl lg:text-xl">
-          Explore groundbreaking research, innovative engineering solutions, and
-          the latest in scientific discoveries.
+      {/* Text Section */}
+      <div className="hidden lg:inline-block text-white ml-8 lg:ml-16 mt-5 space-y-16 max-w-72">
+        <h1 className="text-2xl lg:text-3xl leading-loose  font-light text-center">
+          Where Engineering Meets Science
+        </h1>
+        <p className="text-sm   w-64 ml-5 lg:text-base text-center leading-relaxed">
+          Explore groundbreaking research, innovative engineering solutions, and the latest in scientific discoveries.
         </p>
-        <div className="flex flex-row lg:flex-row items-center  lg:space-x-4 space-x-4  lg:space-y-0">
-          <Link to="Research">
-            <button className="px-6 py-3 mt-5 bg-white text-emerald-700 font-semibold rounded-lg shadow-lg hover:bg-gray-100 transition">
-              Explore Research
-            </button>
-          </Link>
-          <Link to="Join">
-            <button className="px-6 py-3 mt-5 bg-emerald-700 text-white font-semibold rounded-lg shadow-lg hover:bg-emerald-800 transition">
-              Join Us
-            </button>
-          </Link>
-        </div>
       </div>
     </div>
   );

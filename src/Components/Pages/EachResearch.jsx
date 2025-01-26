@@ -3,6 +3,7 @@ import { ref, get, child } from "firebase/database";
 import { useParams } from "react-router-dom";
 import { DB } from "../../config/firebase";
 import DOMPurify from "dompurify"; // Import DOMPurify for sanitization (if needed)
+import ResearchAd from "../ResearchAD";
 
 const EachResearch = () => {
   const { id } = useParams();
@@ -89,17 +90,15 @@ const EachResearch = () => {
   return (
     <div className="bg-gray-50 min-h-screen py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto bg-white rounded-xl shadow-lg p-6 sm:p-8">
+        {/* Pass title as a prop to ResearchAd */}
+        <ResearchAd title={research.title} />
+        
         {/* Title Section */}
-        <header className="mb-8 text-center">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">
-            {research.title}
-          </h1>
-        </header>
 
         {/* Abstract Section */}
         {research.abstract && (
           <section className="bg-gray-100 p-6 rounded-lg shadow-md mb-8 sm:mb-10">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Abstract</h2>
+            <h2 className="text-2xl  text-gray-800 mb-4 text-center font-bold text-4xl ">Abstract</h2>
             <div className="text-base sm:text-lg text-gray-800 leading-relaxed max-w-3xl mx-auto">
               {formatText(research.abstract)}
             </div>

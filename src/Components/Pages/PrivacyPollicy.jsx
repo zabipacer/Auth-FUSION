@@ -47,7 +47,7 @@ const PrivacyPolicy = () => {
         <div>
           <p className="text-gray-600">
             For a detailed policy, please refer to our{" "}
-            <a href="/full-privacy-policy" className="text-blue-600 font-semibold hover:underline">
+            <a href="" className="text-blue-600 font-semibold hover:underline">
               full Privacy Policy document
             </a>.
           </p>

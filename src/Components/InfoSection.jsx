@@ -40,7 +40,9 @@ const InfoSection = () => {
             <div
               key={index}
               onClick={() => setActiveSection(index)}
-              className="bg-emerald-100 p-4 sm:p-6 rounded-lg shadow-md flex items-center gap-4 cursor-pointer hover:bg-emerald-200 transition"
+              className={`bg-emerald-100 p-4 sm:p-6 rounded-lg shadow-md flex items-center gap-4 cursor-pointer hover:bg-emerald-200 transition ${
+                activeSection === index ? "ring-2 ring-emerald-400" : ""
+              }`}
             >
               {/* Icon */}
               <div>{section.icon}</div>
@@ -56,7 +58,15 @@ const InfoSection = () => {
         {/* Dynamic Content Section */}
         <div className="mt-8 bg-emerald-50 p-4 sm:p-6 rounded-lg shadow-md">
           {activeSection !== null ? (
-            sections[activeSection].component
+            <div>
+              <button
+                onClick={() => setActiveSection(null)}
+                className="text-xl m-6 text-emerald-600 underline hover:text-emerald-800 transition"
+              >
+                Back to Overview
+              </button>
+              {sections[activeSection].component}
+            </div>
           ) : (
             <>
               <Overview />

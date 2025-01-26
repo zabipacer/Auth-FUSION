@@ -6,7 +6,7 @@ import Navbar from "./Components/Navbar";
 const Layout = () => {
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <div className="main-content">
         {/* The Outlet will render the matching child route */}
         <Outlet />
