@@ -6,7 +6,7 @@ const JournalAd = () => {
     <div
       className="w-full h-[330px] bg-cover bg-center flex items-center justify-center lg:justify-between"
       style={{
-        backgroundImage: 'url(/backgroundR.png)', // Keeps the same image for all screens
+        backgroundImage: 'url(/backgroundR.webp)', // Keeps the same image for all screens
       }}
     >
       {/* Logo Section */}
