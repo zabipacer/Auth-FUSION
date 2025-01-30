@@ -17,6 +17,11 @@ import AboutUs from "./Components/Pages/AboutUs.jsx";
 import PrivacyPolicy from "./Components/Pages/PrivacyPollicy.jsx";
 import ResearchPage1 from "./Components/Pages/RresearchPage1.jsx";
 
+import AuthorAgreement from "./Components/Pages/AuthorAgreement.jsx";
+import CopyrightPolicy from "./Components/Pages/CopyrightPolicy.jsx";
+import ReviewerGuidelines from "./Components/Pages/ReviewerGuidelines.jsx";
+import SubmissionGuidelines from "./Components/Pages/ManuscriptSubmission.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/", 
@@ -54,8 +59,21 @@ const router = createBrowserRouter([
         path: "Privacy", // Dynamic route for species detail
         element: <PrivacyPolicy />, // Show SpeciesDetail component in the Layout
       },
+      { path: "/guidelines/manuscript" ,
+        element: <SubmissionGuidelines />, 
+      },
+      {path:"/guidelines/author-agreement" ,
+        element: <AuthorAgreement />, },
+      {path: "/guidelines/copyright-policy" ,
+        element: <CopyrightPolicy />, },
+      {path: "/guidelines/reviewer-guidelines" ,
+        element: <ReviewerGuidelines />, }
 
-      
+  
+     
+
+
+
       // Add more routes here as needed
     ],
   },

@@ -13,7 +13,7 @@ const Footer = () => {
           <ul className="space-y-4 text-sm">
             <li>
               <Link
-                to="/copyright-policy"
+                to="/guidelines/copyright-policy"
                 className="hover:text-emerald-300 transition"
               >
                 Copyright Policy
@@ -21,7 +21,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                to="/about-us"
+                to="/about"
                 className="hover:text-emerald-300 transition"
               >
                 About Us
@@ -29,7 +29,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                to="/author-guidelines"
+                to="/guidelines/manuscript"
                 className="hover:text-emerald-300 transition"
               >
                 Author Guidelines
