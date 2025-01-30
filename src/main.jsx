@@ -70,7 +70,9 @@ const router = createBrowserRouter([
       {path: "/guidelines/reviewer-guidelines" ,
         element: <ReviewerGuidelines />, },
         {path: "/contact" ,
-          element: <ContactUs />, }
+          element: <ContactUs />, },
+          {path: "/about/contact" ,
+            element: <ContactUs />, }
   
     
 
