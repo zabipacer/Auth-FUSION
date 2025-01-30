@@ -21,6 +21,7 @@ import AuthorAgreement from "./Components/Pages/AuthorAgreement.jsx";
 import CopyrightPolicy from "./Components/Pages/CopyrightPolicy.jsx";
 import ReviewerGuidelines from "./Components/Pages/ReviewerGuidelines.jsx";
 import SubmissionGuidelines from "./Components/Pages/ManuscriptSubmission.jsx";
+import ContactUs from "./Components/Pages/Contact-us.jsx";
 
 const router = createBrowserRouter([
   {
@@ -67,7 +68,11 @@ const router = createBrowserRouter([
       {path: "/guidelines/copyright-policy" ,
         element: <CopyrightPolicy />, },
       {path: "/guidelines/reviewer-guidelines" ,
-        element: <ReviewerGuidelines />, }
+        element: <ReviewerGuidelines />, },
+        {path: "/contact" ,
+          element: <ContactUs />, }
+  
+    
 
   
      

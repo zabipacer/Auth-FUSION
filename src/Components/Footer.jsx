@@ -37,7 +37,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                to="/contact-us"
+                to="/contact"
                 className="hover:text-emerald-300 transition"
               >
                 Contact Us
@@ -62,7 +62,7 @@ const Footer = () => {
       </div>
       {/* Bottom Bar */}
       <div className="border-t border-emerald-500 mt-8 pt-4 text-center text-sm">
-        Made with ❤️ by the Fusion Team.
+        Developed by the Fusion Team.
       </div>
     </footer>
   );

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { FaLightbulb, FaHandsHelping, FaRocket } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   useEffect(() => {
@@ -65,9 +66,9 @@ const AboutUs = () => {
 
         {/* Call to Action Section */}
         <div className="mt-16 text-center">
-          <button className="px-8 py-4 bg-emerald-600 text-white text-lg font-medium rounded-full shadow-md hover:bg-emerald-700 transition-all">
+          <Link to="contact" className="px-8 py-4 bg-emerald-600 text-white text-lg font-medium rounded-full shadow-md hover:bg-emerald-700 transition-all">
             Contact Us
-          </button>
+          </Link>
         </div>
       </div>
     </div>
