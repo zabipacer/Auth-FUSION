@@ -1,53 +1,101 @@
+import React from "react";
+
 const JournalUpdates = () => (
-  <div className="p-6 bg-gray-50 text-gray-800">
-    <h2 className="text-2xl font-semibold mb-4">Journal Updates</h2>
+  <div className="p-8 bg-gray-50 text-gray-800 rounded-lg shadow-sm">
+    <h2 className="text-3xl font-bold text-emerald-900 mb-6 animate-fade-in">
+      Journal Updates
+    </h2>
 
-    <h3 className="text-xl font-semibold mt-6 mb-2">Outstanding Editors and Peer Reviewers</h3>
-    <p className="mb-4">
-      Our Editorial Board Members (EBMs), Associate Editors (AEs), Guest Editors (GEs), and external peer reviewers are at the heart of Discover Applied Sciences (formerly SN Applied Sciences). These researchers make valuable contributions to the peer-review process, helping our Managing Editors to make informed decisions on research submissions.
-    </p>
+    <div className="space-y-8">
+      <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow animate-fade-in-up">
+        <h3 className="text-xl font-semibold text-emerald-800 mb-3">
+          Outstanding Editors and Peer Reviewers
+        </h3>
+        <p className="text-gray-700 leading-relaxed">
+          At <strong>Fusion Journal of Engineering and Sciences</strong>, our Editorial Board Members (EBMs), Associate Editors (AEs), and external peer reviewers play a pivotal role in maintaining the highest standards of academic excellence. Their expertise and dedication ensure a rigorous and fair peer-review process, helping us deliver impactful research to the global scientific community.
+        </p>
+      </div>
 
-    <h3 className="text-xl font-semibold mt-6 mb-2">Meet the Managing Editors</h3>
-    <p className="mb-4">
-      Learn more about our editorial team!
-    </p>
+      <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow animate-fade-in-up">
+        <h3 className="text-xl font-semibold text-emerald-800 mb-3">
+          Meet the Managing Editors
+        </h3>
+        <p className="text-gray-700 leading-relaxed">
+          Get to know the talented team behind <strong>Fusion Journal of Engineering and Sciences</strong>. Our Managing Editors bring a wealth of experience and passion to the journal, ensuring that every publication meets the highest standards of quality and relevance.
+        </p>
+      </div>
 
-    <h3 className="text-xl font-semibold mt-6 mb-2">Forthcoming and Past Webinars for Discover Applied Sciences</h3>
-    <p className="mb-4">
-      The webinar series offers our authors, guest editors and editorial board members the opportunity to present their recent research to a global audience and discuss cutting-edge applications, technologies, and methods across all disciplines covered by the journal in an interactive session. Webinars are published on our social media channels.
-    </p>
+      <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow animate-fade-in-up">
+        <h3 className="text-xl font-semibold text-emerald-800 mb-3">
+          Upcoming and Past Webinars
+        </h3>
+        <p className="text-gray-700 leading-relaxed">
+          Join us for our exclusive webinar series, where leading researchers and experts share their groundbreaking work in engineering, applied sciences, and interdisciplinary fields. These interactive sessions provide a platform for knowledge exchange and collaboration. Stay tuned for updates on our social media channels!
+        </p>
+      </div>
 
-    <h3 className="text-xl font-semibold mt-6 mb-2">Topical Collections</h3>
-    <p className="mb-4">
-      The journal publishes guest-edited Topical Collections on emerging hot topics of relevance to all aspects of life science, chemistry, earth and environmental sciences, engineering, materials science, and physics. Our Topical Collections allow readers to quickly identify research on subject areas of particular interest to them.
-    </p>
+      <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow animate-fade-in-up">
+        <h3 className="text-xl font-semibold text-emerald-800 mb-3">
+          Topical Collections
+        </h3>
+        <p className="text-gray-700 leading-relaxed">
+          Explore our curated Topical Collections, featuring cutting-edge research on emerging trends and hot topics in engineering, life sciences, chemistry, environmental sciences, and more. These collections provide a focused resource for readers and highlight the latest advancements in their fields of interest.
+        </p>
+      </div>
 
-    <h3 className="text-xl font-semibold mt-6 mb-2">Follow us on Twitter</h3>
-    <p className="mb-4">
-      Discover Applied Sciences (formerly SN Applied Sciences) is on Twitter. Follow us and keep up to date with the latest journal news, research highlights, and more.
-    </p>
-    <a href="https://twitter.com" className="text-blue-600">Visit now</a>
+      <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow animate-fade-in-up">
+        <h3 className="text-xl font-semibold text-emerald-800 mb-3">
+          Follow Us on Social Media
+        </h3>
+        <p className="text-gray-700 leading-relaxed mb-4">
+          Stay connected with <strong>Fusion Journal of Engineering and Sciences</strong> on Twitter and other social media platforms. Follow us for the latest journal updates, research highlights, and announcements about upcoming events and publications.
+        </p>
+        <a
+          href="https://twitter.com"
+          className="text-blue-600 hover:text-blue-800 transition-colors"
+        >
+          Follow us on Twitter →
+        </a>
+      </div>
 
-    <h3 className="text-xl font-semibold mt-6 mb-2">Writing your manuscript: interactive author tutorials</h3>
-    <p className="mb-4">
-      Looking to publish in a Discover journal? Springer Nature provides interactive tutorials to help you as an author write the best article possible by providing points to consider, from your background reading and study design to manuscript structuring and figure preparation. Find out more.
-    </p>
+      <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow animate-fade-in-up">
+        <h3 className="text-xl font-semibold text-emerald-800 mb-3">
+          Author Resources: Writing Your Manuscript
+        </h3>
+        <p className="text-gray-700 leading-relaxed">
+          Planning to submit your research to <strong>Fusion Journal of Engineering and Sciences</strong>? We offer comprehensive author resources, including interactive tutorials and guidelines, to help you prepare a high-quality manuscript. From study design to figure preparation, we’ve got you covered.
+        </p>
+      </div>
 
-    <h3 className="text-xl font-semibold mt-6 mb-2">Introducing In Review</h3>
-    <p className="mb-4">
-      In Review, a new preprint service brought to you by Research Square, is available on Discover Applied Sciences. By opting in to this service, you will be able to:
-    </p>
-    <ul className="list-disc pl-6 mb-4">
-      <li>Showcase your work to funders and others with a citable preprint while it is under review.</li>
-      <li>Track the status of your manuscript through the peer review process on a more granular level.</li>
-      <li>Benefit from early sharing, such as more collaboration opportunities and earlier citations.</li>
-    </ul>
-    <a href="https://researchsquare.com" className="text-blue-600">See the full range of benefits of In Review and how to opt-in</a>
-    <p className="mb-4">
-      See what the In Review platform looks like.
-    </p>
+      <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow animate-fade-in-up">
+        <h3 className="text-xl font-semibold text-emerald-800 mb-3">
+          Introducing Preprint Sharing with In Review
+        </h3>
+        <p className="text-gray-700 leading-relaxed mb-4">
+          <strong>Fusion Journal of Engineering and Sciences</strong> now offers authors the option to share their work as preprints through our partnership with Research Square’s In Review service. By opting in, you can:
+        </p>
+        <ul className="list-disc pl-6 mb-4 text-gray-700">
+          <li>Share your research with the community while it undergoes peer review.</li>
+          <li>Track the status of your manuscript in real-time.</li>
+          <li>Gain early visibility and collaboration opportunities.</li>
+        </ul>
+        <a
+          href="https://researchsquare.com"
+          className="text-blue-600 hover:text-blue-800 transition-colors"
+        >
+          Learn more about In Review and how to opt-in →
+        </a>
+      </div>
 
-    <h3 className="text-xl font-semibold mt-6 mb-2">The Discover Series</h3>
+      <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow animate-fade-in-up">
+        <h3 className="text-xl font-semibold text-emerald-800 mb-3">
+          The Fusion Series
+        </h3>
+        <p className="text-gray-700 leading-relaxed">
+          Discover the <strong>Fusion Series</strong>, a collection of special issues and curated content that highlights interdisciplinary research and innovative applications across engineering and applied sciences. Each edition focuses on a specific theme, offering readers a deep dive into the latest advancements.
+        </p>
+      </div>
+    </div>
   </div>
 );
 
