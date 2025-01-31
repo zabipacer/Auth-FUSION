@@ -9,93 +9,77 @@ const ContactUs = () => {
     window.scrollTo(0, 0); // Scrolls to the top of the page when the component loads
   }, []);
 
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Placeholder for form submission logic
     setMessageStatus("Thank you for your message! We will get back to you shortly.");
     setFormData({ name: "", email: "", message: "" }); // Reset form after submission
+    setTimeout(() => setMessageStatus(null), 5000);
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-gray-100">
       <div className="container mx-auto py-12 px-6">
-        <h2 className="text-4xl font-extrabold text-emerald-800 text-center mb-8">
+        <h2 className="text-4xl font-extrabold text-emerald-900 text-center mb-12 tracking-wide">
           Contact Us
         </h2>
 
         {/* Contact Info Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          <div className="flex items-center justify-center p-6 bg-white shadow-lg rounded-lg">
-            <div className="text-center">
-              <FaPhoneAlt className="text-emerald-600 text-3xl mb-4" />
-              <h3 className="text-xl font-semibold text-gray-800">Phone</h3>
-              <p className="text-gray-600">+1 (123) 456-7890</p>
+          {[
+            { icon: FaPhoneAlt, title: "Phone", text: "+1 (123) 456-7890" },
+            { icon: FaEnvelope, title: "Email", text: "contact@fusionjournal.com" },
+            { icon: FaMapMarkerAlt, title: "Address", text: "123 Fusion Street, Tech City, USA" },
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="flex items-center justify-center p-6 bg-white shadow-md rounded-xl hover:shadow-lg transition-all duration-300"
+            >
+              <div className="text-center">
+                <item.icon className="text-emerald-600  mx-auto text-4xl mb-4" />
+                <h3 className="text-xl font-semibold text-gray-800">{item.title}</h3>
+                <p className="text-gray-600">{item.text}</p>
+              </div>
             </div>
-          </div>
-          <div className="flex items-center justify-center p-6 bg-white shadow-lg rounded-lg">
-            <div className="text-center">
-              <FaEnvelope className="text-emerald-600 text-3xl mb-4" />
-              <h3 className="text-xl font-semibold text-gray-800">Email</h3>
-              <p className="text-gray-600">contact@fusionjournal.com</p>
-            </div>
-          </div>
-          <div className="flex items-center justify-center p-6 bg-white shadow-lg rounded-lg">
-            <div className="text-center">
-              <FaMapMarkerAlt className="text-emerald-600 text-3xl mb-4" />
-              <h3 className="text-xl font-semibold text-gray-800">Address</h3>
-              <p className="text-gray-600">123 Fusion Street, Tech City, USA</p>
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* Contact Form Section */}
-        <div className="bg-white p-8 rounded-lg shadow-lg max-w-2xl mx-auto">
-          <h3 className="text-2xl font-semibold text-emerald-800 mb-4 text-center">
+        <div className="bg-white p-8 rounded-xl shadow-lg max-w-2xl mx-auto">
+          <h3 className="text-2xl font-semibold text-emerald-800 mb-6 text-center">
             Send Us a Message
           </h3>
           {messageStatus && (
-            <div className="bg-emerald-100 p-4 mb-6 text-emerald-800 text-center rounded-lg">
+            <div className="bg-emerald-100 p-4 mb-6 text-emerald-800 text-center rounded-lg shadow-md animate-fade-in">
               {messageStatus}
             </div>
           )}
 
-          <form onSubmit={handleSubmit}>
-            <div className="mb-6">
-              <label className="block text-lg font-medium text-gray-700 mb-2" htmlFor="name">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full p-3 bg-gray-100 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                required
-              />
-            </div>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {[
+              { label: "Name", type: "text", name: "name", value: formData.name },
+              { label: "Email Address", type: "email", name: "email", value: formData.email },
+            ].map((input, index) => (
+              <div key={index}>
+                <label className="block text-lg font-medium text-gray-700 mb-2" htmlFor={input.name}>
+                  {input.label}
+                </label>
+                <input
+                  type={input.type}
+                  id={input.name}
+                  name={input.name}
+                  value={input.value}
+                  onChange={handleChange}
+                  className="w-full p-3 bg-gray-100 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-300"
+                  required
+                />
+              </div>
+            ))}
 
-            <div className="mb-6">
-              <label className="block text-lg font-medium text-gray-700 mb-2" htmlFor="email">
-                Email Address
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full p-3 bg-gray-100 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                required
-              />
-            </div>
-
-            <div className="mb-6">
+            <div>
               <label className="block text-lg font-medium text-gray-700 mb-2" htmlFor="message">
                 Message
               </label>
@@ -105,7 +89,7 @@ const ContactUs = () => {
                 value={formData.message}
                 onChange={handleChange}
                 rows="5"
-                className="w-full p-3 bg-gray-100 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                className="w-full p-3 bg-gray-100 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-300"
                 required
               />
             </div>
@@ -113,7 +97,7 @@ const ContactUs = () => {
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="w-full py-3 px-6 bg-emerald-600 text-white text-lg font-semibold rounded-md hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                className="w-full py-3 px-6 bg-emerald-600 text-white text-lg font-semibold rounded-lg shadow-md hover:bg-emerald-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               >
                 Send Message
               </button>
