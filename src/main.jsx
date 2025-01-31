@@ -72,7 +72,10 @@ const router = createBrowserRouter([
         {path: "/contact" ,
           element: <ContactUs />, },
           {path: "/about/contact" ,
-            element: <ContactUs />, }
+            element: <ContactUs />, } {
+              path: "/research/:id/Join", // Dynamic route for species detail
+              element: <Joinus />, // Show SpeciesDetail component in the Layout
+            },
   
     
 

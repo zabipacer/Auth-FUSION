@@ -44,7 +44,7 @@ const ResearchAD = ({ title }) => {
             <div className="flex flex-wrap justify-start sm:justify-start gap-4 text-sm">
              
               <Link
-                to="Join"
+                to="/Join"
                 className="text-emerald-400 hover:underline hover:text-white"
               >
                 Submit manuscript →
