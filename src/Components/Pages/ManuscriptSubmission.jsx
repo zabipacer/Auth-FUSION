@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaFileAlt, FaUpload, FaCheckCircle, FaExclamationTriangle } from "react-icons/fa";
 
 const SubmissionGuidelines = () => {
-  return (
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page when the component loads
+  }, []);
+
+    return (
     <div className="container mx-auto px-6 py-12 max-w-5xl bg-white shadow-lg rounded-lg border border-gray-200 mt-8">
       {/* Header */}
       <div className="mb-8 border-b pb-4">

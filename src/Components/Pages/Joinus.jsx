@@ -4,6 +4,10 @@ import { auth } from "../../config/firebase";
 
 const JoinUs = () => {
   const navigate = useNavigate();
+    useEffect(() => {
+      window.scrollTo(0, 0); // Scrolls to the top of the page when the component loads
+    }, []);
+  
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {

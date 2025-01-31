@@ -6,6 +6,10 @@ import DOMPurify from "dompurify"; // Import DOMPurify for sanitization (if need
 import ResearchAd from "../ResearchAD";
 
 const EachResearch = () => {
+    useEffect(() => {
+      window.scrollTo(0, 0); // Scrolls to the top of the page when the component loads
+    }, []);
+  
   const { id } = useParams();
   const [research, setResearch] = useState(null);
   const [loading, setLoading] = useState(true);

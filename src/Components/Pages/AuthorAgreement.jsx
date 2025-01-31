@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const AuthorAgreement = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page when the component loads
+  }, []);
+
   return (
     <div className="max-w-4xl mx-auto p-10 bg-white shadow-lg rounded-lg border border-gray-300">
       <h2 className="text-4xl font-bold text-emerald-900 mb-6 text-center">

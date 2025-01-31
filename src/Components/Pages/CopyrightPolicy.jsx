@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaCopyright, FaPen, FaShieldAlt, FaUserShield } from "react-icons/fa";
 
 const CopyrightPolicy = () => {
-  return (
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page when the component loads
+  }, []);
+
+    return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       {/* Main content wrapper */}
       <div className="flex-1 p-8 bg-white shadow-lg rounded-lg max-w-4xl mx-auto mt-24">

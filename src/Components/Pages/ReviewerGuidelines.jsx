@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaClipboardList, FaFileAlt, FaUsers, FaShieldAlt } from "react-icons/fa";
 
 const ReviewerGuidelines = () => {
+      useEffect(() => {
+        window.scrollTo(0, 0); // Scrolls to the top of the page when the component loads
+      }, []);
+    
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       {/* Main content wrapper */}
