@@ -67,25 +67,6 @@ const JournalUpdates = () => (
         </p>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow animate-fade-in-up">
-        <h3 className="text-xl font-semibold text-emerald-800 mb-3">
-          Introducing Preprint Sharing with In Review
-        </h3>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          <strong>Fusion Journal of Engineering and Sciences</strong> now offers authors the option to share their work as preprints through our partnership with Research Square’s In Review service. By opting in, you can:
-        </p>
-        <ul className="list-disc pl-6 mb-4 text-gray-700">
-          <li>Share your research with the community while it undergoes peer review.</li>
-          <li>Track the status of your manuscript in real-time.</li>
-          <li>Gain early visibility and collaboration opportunities.</li>
-        </ul>
-        <a
-          href="https://researchsquare.com"
-          className="text-blue-600 hover:text-blue-800 transition-colors"
-        >
-          Learn more about In Review and how to opt-in →
-        </a>
-      </div>
 
       <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow animate-fade-in-up">
         <h3 className="text-xl font-semibold text-emerald-800 mb-3">

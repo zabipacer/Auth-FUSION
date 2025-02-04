@@ -12,11 +12,11 @@ const ResearchPage = () => {
 
   // Categories with icons
   const categories = [
-    { name: "Life Sciences", icon: <FaMicroscope /> },
-    { name: "Chemistry", icon: <FaFlask /> },
-    { name: "Environmental Sciences", icon: <FaGlobe /> },
-    { name: "Engineering", icon: <FaCogs /> },
-    { name: "Physics", icon: <FaAtom /> },
+    { name: "Engineering", icon: <FaMicroscope /> },
+    { name: "Medical Sciences", icon: <FaFlask /> },
+    { name: "Earth Sciences", icon: <FaGlobe /> },
+    { name: "Social Sciences", icon: <FaCogs /> },
+    { name: "Others", icon: <FaAtom /> },
   ];
 
   // States for articles and selected category

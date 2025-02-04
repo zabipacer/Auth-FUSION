@@ -1,20 +1,37 @@
 import React, { useEffect } from "react";
-import { FaFileAlt, FaUpload, FaCheckCircle, FaExclamationTriangle } from "react-icons/fa";
+import { FaFileAlt, FaUpload, FaCheckCircle, FaExclamationTriangle, FaDownload } from "react-icons/fa";
 
 const SubmissionGuidelines = () => {
   useEffect(() => {
     window.scrollTo(0, 0); // Scrolls to the top of the page when the component loads
   }, []);
 
-    return (
+  return (
     <div className="container mx-auto px-6 py-12 max-w-5xl bg-white shadow-lg rounded-lg border border-gray-200 mt-8">
       {/* Header */}
       <div className="mb-8 border-b pb-4">
         <h2 className="text-4xl font-bold text-gray-900 flex items-center gap-3">
           <FaFileAlt className="text-emerald-600" /> Submission Guidelines
         </h2>
-        <p className="text-gray-600 mt-2">Please follow these guidelines carefully to ensure a smooth submission and review process.</p>
+        <p className="text-gray-600 mt-2">
+          Please follow these guidelines carefully to ensure a smooth submission and review process.
+        </p>
       </div>
+
+      {/* Download Submission Template */}
+      <section className="mb-8">
+        <h3 className="text-2xl font-semibold text-gray-800 border-b pb-2 flex items-center gap-2">
+          <FaDownload className="text-blue-600" /> Download Submission Template
+        </h3>
+        <p className="text-gray-700 mt-3">Download the official submission template for proper formatting:</p>
+        <a
+          href="/Fusion-template.dot"
+          download="Fusion-template.dot"
+          className="mt-3 inline-flex items-center px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
+        >
+          <FaDownload className="mr-2" /> Download Template
+        </a>
+      </section>
 
       {/* Instructions for Authors */}
       <section className="mb-8">
@@ -24,22 +41,6 @@ const SubmissionGuidelines = () => {
           <li>All co-authors and institutions must approve the submission.</li>
           <li>Permissions must be obtained for third-party content (figures, tables, text).</li>
         </ul>
-      </section>
-
-      {/* Formatting Requirements */}
-      <section className="mb-8">
-        <h3 className="text-2xl font-semibold text-gray-800 border-b pb-2">Formatting Requirements</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-          <ul className="list-disc list-inside text-gray-700 space-y-2">
-            <li>Manuscripts must be in English.</li>
-            <li>Use 12-point Times New Roman font.</li>
-            <li>Double-spacing is required.</li>
-          </ul>
-          <ul className="list-disc list-inside text-gray-700 space-y-2">
-            <li>Include page numbers at the bottom right.</li>
-            <li>Use a decimal heading system (max three levels).</li>
-          </ul>
-        </div>
       </section>
 
       {/* File Formats */}

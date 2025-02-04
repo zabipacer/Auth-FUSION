@@ -30,8 +30,8 @@ const ContactUs = () => {
         {/* Contact Info Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {[
-            { icon: FaPhoneAlt, title: "Phone", text: "+1 (123) 456-7890" },
-            { icon: FaEnvelope, title: "Email", text: "contact@fusionjournal.com" },
+            { icon: FaPhoneAlt, title: "Phone", text: "+92 (301) 771-7768" },
+            { icon: FaEnvelope, title: "Email", text: "contact@fusionejs.com" },
             { icon: FaMapMarkerAlt, title: "Address", text: "123 Fusion Street, Tech City, USA" },
           ].map((item, index) => (
             <div
