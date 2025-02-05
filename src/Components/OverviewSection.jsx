@@ -11,7 +11,7 @@ const Overview = () => {
             Overview
           </h2>
           <p className="text-lg sm:text-xl text-gray-700 mt-4 leading-relaxed">
-            Fusion jounal is a multi-disciplinary open-access
+            Fusion is a multi-disciplinary open-access
             journal fostering research in various disciplines. Our mission is to
             facilitate the dissemination of knowledge to a global audience.
           </p>
