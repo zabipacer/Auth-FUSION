@@ -71,7 +71,7 @@ const AimsAndScope = () => (
       <li><strong>Global Reach:</strong> Freely accessible to researchers, policymakers, and practitioners worldwide.</li>
       <li><strong>Interdisciplinary Focus:</strong> Bridging gaps between technical fields and societal needs.</li>
     </ul>
-    <p className="text-gray-800 leading-relaxed mt-6">For submission guidelines and editorial policies, visit <a href="https://fusionesj.com/submissions" className="text-emerald-600 font-semibold hover:underline">Fusionesj.com/submissions</a>.</p>
+    <p className="text-gray-800 leading-relaxed mt-6">For submission guidelines and editorial policies, visit <a href="https://www.fusionesj.com/guidelines/manuscript" className="text-emerald-600 font-semibold hover:underline">Fusionesj.com/submissions</a>.</p>
   </div>
 );
 
