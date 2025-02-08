@@ -4,8 +4,7 @@ import { FaMicroscope, FaFlask, FaCogs, FaFileAlt } from "react-icons/fa";
 const AimsAndScope = () => (
   <div className="p-8 bg-white rounded-lg shadow-xl max-w-full md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto border border-gray-200 transform transition-all hover:shadow-2xl">
     <h1 className="text-4xl font-bold text-emerald-900 mb-8 text-center md:text-left border-b-4 border-emerald-500 pb-3 animate-fade-in">
-      Revised Aims and Scope for Fusion Journal of Engineering and Sciences
-    </h1>
+      Aims and Scope    </h1>
     <p className="text-gray-800 leading-relaxed mb-8 animate-fade-in-up">
       <strong>Fusion Journal of Engineering and Sciences</strong> is a fully open-access (OA) journal dedicated to advancing multidisciplinary research across engineering, applied sciences, and their intersections with societal and planetary challenges. All content is freely accessible to promote global knowledge sharing, collaboration, and innovation.
     </p>
