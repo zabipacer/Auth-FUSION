@@ -30,7 +30,7 @@ const Overview = () => {
             <p className="text-sm text-gray-700 leading-relaxed">
               Our journal is indexed in the world’s most authoritative academic
               databases, ensuring maximum visibility and impact, including:
-              Web of Science, Scopus, PubMed/MEDLINE, and more. We uphold
+              Web of Science, Scopus, PubMed, and more. We uphold
               rigorous evaluation standards to guarantee research quality and
               global accessibility.
             </p>
