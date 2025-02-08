@@ -13,7 +13,7 @@ import { getDatabase } from "firebase/database";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCtbKEWyKIcWsBpdnaeGwj0Rz080U7vRUg",
+  apiKey: import.meta.env.VITE_FIREBASE_API,
   authDomain: "fusion-journal-of-engg-and-sci.firebaseapp.com",
   projectId: "fusion-journal-of-engg-and-sci",
   storageBucket: "fusion-journal-of-engg-and-sci.firebasestorage.app",

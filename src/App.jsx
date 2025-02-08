@@ -12,6 +12,7 @@ import { auth } from './config/firebase';
 function App() {
   
 
+  console.log("Firebase API Key:", process.env.REACT_APP_FIREBASE_API);
 
   
   return (
