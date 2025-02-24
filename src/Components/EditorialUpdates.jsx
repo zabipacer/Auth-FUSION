@@ -53,11 +53,7 @@ const EditorialBoard = () => (
         <p className="text-gray-700 flex items-center"><FaPhone className="mr-2" /> +973 3456 2041</p>
       </div>
       
-      <div className="mb-6">
-        <h3 className="text-xl font-medium text-emerald-700">Dr. Hafiz Ahmed Waqas</h3>
-        <p className="text-gray-700">GIK Institute</p>
-        <p className="text-gray-700 flex items-center"><FaEnvelope className="mr-2" /> Ahmed.waqas@giki.edu.pk</p>
-      </div>
+   
     </section>
   </div>
 );
