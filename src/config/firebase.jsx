@@ -4,6 +4,7 @@ import { getAuth } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore"; // Note: not "firebase/firestore/lite"
 import { getDatabase } from "firebase/database";
+import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -21,4 +22,5 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app); // using full Firestore
 export const DB = getDatabase(app);
+export const storage = getStorage(app);
 export default app;

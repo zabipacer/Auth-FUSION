@@ -82,7 +82,7 @@ const EachResearch = () => {
   return (
     <div className="bg-gray-50 min-h-screen py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto sm:bg-white sm:rounded-xl sm:shadow-lg sm:p-6 lg:max-w-5xl">
-        <ResearchAd title={research.title} />
+        <ResearchAd title={research.title} researchId={id} />
 
         {research.abstract && (
           <section className="bg-gray-100 p-6 rounded-lg shadow-md mb-8">
