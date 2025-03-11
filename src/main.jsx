@@ -22,6 +22,8 @@ import CopyrightPolicy from "./Components/Pages/CopyrightPolicy.jsx";
 import ReviewerGuidelines from "./Components/Pages/ReviewerGuidelines.jsx";
 import SubmissionGuidelines from "./Components/Pages/ManuscriptSubmission.jsx";
 import ContactUs from "./Components/Pages/Contact-us.jsx";
+import Dashboard from "./Components/Pages/UserDashboard.jsx";
+import JoinUs from "./Components/Pages/Joinus.jsx";
 
 const router = createBrowserRouter([
   {
@@ -38,7 +40,11 @@ const router = createBrowserRouter([
       },
       {
         path: "Join", // Dynamic route for species detail
-        element: <Joinus />, // Show SpeciesDetail component in the Layout
+        element: <Dashboard />, // Show SpeciesDetail component in the Layout
+      },
+      {
+        path: "join-us", // Dynamic route for species detail
+        element: <JoinUs />, // Show SpeciesDetail component in the Layout
       },
       {
         path: "Login", // Dynamic route for species detail
@@ -74,7 +80,7 @@ const router = createBrowserRouter([
           {path: "/about/contact" ,
             element: <ContactUs />, }, {
               path: "/research/:id/Join", // Dynamic route for species detail
-              element: <Joinus />, // Show SpeciesDetail component in the Layout
+              element: <Dashboard />, // Show SpeciesDetail component in the Layout
             },
   
     

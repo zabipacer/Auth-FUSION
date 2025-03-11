@@ -1,13 +1,17 @@
+// src/components/JoinUs.js
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../../config/firebase";
+import { auth, db } from "../../config/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const JoinUs = () => {
   const navigate = useNavigate();
-    useEffect(() => {
-      window.scrollTo(0, 0); // Scrolls to the top of the page when the component loads
-    }, []);
-  
+  const storage = getStorage(); // Get Firebase Storage instance
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -15,7 +19,6 @@ const JoinUs = () => {
         navigate("/login");
       }
     });
-
     return () => unsubscribe();
   }, [navigate]);
 
@@ -27,10 +30,11 @@ const JoinUs = () => {
     file: null,
   });
   const [error, setError] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleFileChange = (e) => {
@@ -39,28 +43,44 @@ const JoinUs = () => {
       setError("File size cannot exceed 5MB.");
       return;
     }
-    setFormData({ ...formData, file });
+    setFormData((prev) => ({ ...prev, file }));
     setError(null);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!formData.file) {
       setError("Please upload a file.");
       return;
     }
 
-    const data = new FormData();
-    data.append("name", formData.name);
-    data.append("email", formData.email);
-    data.append("title", formData.title);
-    data.append("abstract", formData.abstract);
-    data.append("file", formData.file);
-
+    setSubmitting(true);
     try {
-      const response = await axios.post("", data);
-      alert(response.data.message);
+      // Create a storage reference for the file
+      const storageRef = ref(
+        storage,
+        `submissions/${formData.file.name}-${Date.now()}`
+      );
+      // Upload file to Firebase Storage
+      const snapshot = await uploadBytes(storageRef, formData.file);
+      // Get the download URL for the uploaded file
+      const downloadURL = await getDownloadURL(snapshot.ref);
+
+      // Prepare the submission data
+      const submissionData = {
+        name: formData.name,
+        email: formData.email,
+        title: formData.title,
+        abstract: formData.abstract,
+        fileUrl: downloadURL,
+        status: "pending", // default status
+        createdAt: serverTimestamp(),
+      };
+
+      // Add the submission document to Firestore
+      await addDoc(collection(db, "submissions"), submissionData);
+
+      alert("Your research submission has been received!");
       setFormData({
         name: "",
         email: "",
@@ -71,6 +91,8 @@ const JoinUs = () => {
     } catch (err) {
       console.error(err);
       setError("Error submitting the form. Please try again later.");
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -78,8 +100,8 @@ const JoinUs = () => {
     try {
       await auth.signOut();
       navigate("/login");
-    } catch (error) {
-      console.error("Error signing out: ", error);
+    } catch (err) {
+      console.error("Error signing out:", err);
     }
   };
 
@@ -89,7 +111,8 @@ const JoinUs = () => {
         Join Us
       </h1>
       <p className="text-lg text-gray-600 mb-8 text-center max-w-2xl">
-        Submit your research to our journal and contribute to groundbreaking discoveries in science and engineering.
+        Submit your research to our journal and contribute to groundbreaking
+        discoveries in science and engineering.
       </p>
       <form
         onSubmit={handleSubmit}
@@ -97,7 +120,10 @@ const JoinUs = () => {
       >
         {/* Name */}
         <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="name"
+            className="block text-sm font-medium text-gray-700"
+          >
             Full Name
           </label>
           <input
@@ -114,7 +140,10 @@ const JoinUs = () => {
 
         {/* Email */}
         <div className="mb-4">
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-700"
+          >
             Email Address
           </label>
           <input
@@ -131,7 +160,10 @@ const JoinUs = () => {
 
         {/* Research Title */}
         <div className="mb-4">
-          <label htmlFor="title" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="title"
+            className="block text-sm font-medium text-gray-700"
+          >
             Research Title
           </label>
           <input
@@ -148,7 +180,10 @@ const JoinUs = () => {
 
         {/* Abstract */}
         <div className="mb-4">
-          <label htmlFor="abstract" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="abstract"
+            className="block text-sm font-medium text-gray-700"
+          >
             Abstract
           </label>
           <textarea
@@ -165,7 +200,10 @@ const JoinUs = () => {
 
         {/* File Upload */}
         <div className="mb-4">
-          <label htmlFor="file" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="file"
+            className="block text-sm font-medium text-gray-700"
+          >
             Upload Your Research Paper (PDF, DOC, DOCX, Max 5MB)
           </label>
           <input
@@ -183,9 +221,10 @@ const JoinUs = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full py-3 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition"
+          disabled={submitting}
+          className="w-full py-3 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition disabled:opacity-50"
         >
-          Submit Research
+          {submitting ? "Submitting..." : "Submit Research"}
         </button>
 
         {/* Sign Out Button */}
