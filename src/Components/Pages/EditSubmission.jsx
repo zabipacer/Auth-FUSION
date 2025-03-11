@@ -52,7 +52,7 @@ const EditSubmission = () => {
         updatedAt: serverTimestamp(),
       });
       toast.success("Submission updated successfully!");
-      navigate("/dashboard");
+      navigate("/Join");
     } catch (error) {
       console.error("Error updating submission:", error);
       toast.error("Failed to update submission. Please try again.");
