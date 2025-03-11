@@ -28,7 +28,7 @@ const EditSubmission = () => {
           setContent(data.content || "");
         } else {
           toast.error("Submission not found");
-          navigate("/dashboard");
+          navigate("/Join");
         }
       } catch (error) {
         console.error("Error fetching submission:", error);
