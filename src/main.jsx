@@ -24,7 +24,7 @@ import SubmissionGuidelines from "./Components/Pages/ManuscriptSubmission.jsx";
 import ContactUs from "./Components/Pages/Contact-us.jsx";
 import Dashboard from "./Components/Pages/UserDashboard.jsx";
 import JoinUs from "./Components/Pages/Joinus.jsx";
-
+import EditSubmission from "./Components/Pages/EditSubmission.jsx";
 const router = createBrowserRouter([
   {
     path: "/", 
@@ -81,6 +81,10 @@ const router = createBrowserRouter([
             element: <ContactUs />, }, {
               path: "/research/:id/Join", // Dynamic route for species detail
               element: <Dashboard />, // Show SpeciesDetail component in the Layout
+            },
+            {
+              path: "edit/:id", // Dynamic route for species detail
+              element: <EditSubmission />, 
             },
   
     
