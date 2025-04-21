@@ -23,7 +23,7 @@ const SubmissionGuidelines = () => {
         <h3 className="text-2xl font-semibold text-gray-800 border-b pb-2 flex items-center gap-2">
           <FaDownload className="text-blue-600" /> Download Submission Template
         </h3>
-        <p className="text-gray-700 mt-3">Download the official submission template for proper formatting:</p>
+        <p className="text-gray-700 mt-3">Download the official submission template:</p>
         <a
           href="/Fusion-template1.pdf"
           download="Fusion-template1.pdf"
