@@ -25,8 +25,8 @@ const SubmissionGuidelines = () => {
         </h3>
         <p className="text-gray-700 mt-3">Download the official submission template for proper formatting:</p>
         <a
-          href="/Fusion-template.pdf"
-          download="Fusion-template.pdf"
+          href="/Fusion-template1.pdf"
+          download="Fusion-template1.pdf"
           className="mt-3 inline-flex items-center px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
         >
           <FaDownload className="mr-2" /> Download Template
